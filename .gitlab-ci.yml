@@ -1,0 +1,53 @@
+stages: 
+  - deques
+  - autocomplete
+  - pq
+  - seamfinding
+  - all
+
+variables: 
+  DEQUES_FINAL: 'deques-final'
+  AUTOCOMPLETE_FINAL: 'autocomplete-final'
+  PQ_FINAL: 'pq-final'
+  SP_FINAL: 'shortestpaths-final'
+  AT_FINAL: 'alltests-final'
+
+build-deques:
+  stage: deques 
+  script:
+    - ./gradlew  --warning-mode all clean test --tests 'deques.*'
+  rules: 
+    - if: $CI_COMMIT_TAG != null && $DEQUES_FINAL
+    - when: always 
+
+build-autocomplete:
+  stage: autocomplete
+  script:
+    - ./gradlew  --warning-mode all clean test --tests 'autocomplete.*'
+  rules: 
+    - if: $CI_COMMIT_TAG != null && $AUTOCOMPLETE_FINAL
+    - when: always
+
+build-minpq:
+  stage: pq
+  script:
+    - ./gradlew  --warning-mode all clean test --tests 'minpq.*'
+  rules: 
+    - if: $CI_COMMIT_TAG != null && $PQ_FINAL
+    - when: always
+
+build-shortestpaths:
+  stage: seamfinding
+  script:
+    - ./gradlew  --warning-mode all clean test --tests 'seamfinding.*'
+  rules: 
+    - if: $CI_COMMIT_TAG != null && $SP_FINAL
+    - when: always
+
+build-allTests:
+  stage: all
+  script:
+    - ./gradlew  --warning-mode all clean test
+  rules: 
+    - if: $CI_COMMIT_TAG != null && $AT_FINAL
+    - when: always 
