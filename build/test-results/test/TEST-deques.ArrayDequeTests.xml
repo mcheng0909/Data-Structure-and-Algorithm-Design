@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="deques.ArrayDequeTests" tests="24" skipped="0" failures="0" errors="0" timestamp="2024-07-05T00:36:34" hostname="RitadeMacBook-Air.local" time="0.253">
+  <properties/>
+  <testcase name="getEachAfterAddToOppositeEndsReturnsCorrectElements()" classname="deques.ArrayDequeTests" time="0.045"/>
+  <testcase name="removeWhenEmptyReturnsNull()" classname="deques.ArrayDequeTests" time="0.003"/>
+  <testcase name="anotherConfusingTest()" classname="deques.ArrayDequeTests" time="0.002"/>
+  <testcase name="bandaidTest()" classname="deques.ArrayDequeTests" time="0.001"/>
+  <testcase name="sizeWhenEmptyIsZero()" classname="deques.ArrayDequeTests" time="0.007"/>
+  <testcase name="confusingTest()" classname="deques.ArrayDequeTests" time="0.002"/>
+  <testcase name="getPositiveIndexWhenEmptyReturnsNull()" classname="deques.ArrayDequeTests" time="0.002"/>
+  <testcase name="removeAfterAddBooleanReturnsCorrectBoolean()" classname="deques.ArrayDequeTests" time="0.01"/>
+  <testcase name="getIndexZeroWithOneElementReturnsElement()" classname="deques.ArrayDequeTests" time="0.002"/>
+  <testcase name="usingMultipleDequesSimultaneouslyDoesNotCauseInterference()" classname="deques.ArrayDequeTests" time="0.013"/>
+  <testcase name="removeAfterAddToOppositeEndsReturnsCorrectElement()" classname="deques.ArrayDequeTests" time="0.008"/>
+  <testcase name="removeAfterAddDoubleReturnsCorrectDouble()" classname="deques.ArrayDequeTests" time="0.004"/>
+  <testcase name="removeAfterAddStringReturnsCorrectString()" classname="deques.ArrayDequeTests" time="0.003"/>
+  <testcase name="bandaidTest2()" classname="deques.ArrayDequeTests" time="0.008"/>
+  <testcase name="getIndexZeroWhenEmptyReturnsNull()" classname="deques.ArrayDequeTests" time="0.002"/>
+  <testcase name="sizeAfterRemoveAfterAddToOppositeEndsIsOne()" classname="deques.ArrayDequeTests" time="0.001"/>
+  <testcase name="addToEmptyDoesNotThrowException()" classname="deques.ArrayDequeTests" time="0.007"/>
+  <testcase name="getEachAfterAddManyToSameSideReturnsCorrectElements()" classname="deques.ArrayDequeTests" time="0.003"/>
+  <testcase name="removeAfterAddOneElementToSameSideReturnsElement()" classname="deques.ArrayDequeTests" time="0.003"/>
+  <testcase name="sizeAfterAddToOppositeEndsIsTwo()" classname="deques.ArrayDequeTests" time="0.004"/>
+  <testcase name="removeAfterRemoveAfterAddToOppositeEndsReturnsCorrectElement()" classname="deques.ArrayDequeTests" time="0.001"/>
+  <testcase name="sizeWithOneElementIsOne()" classname="deques.ArrayDequeTests" time="0.001"/>
+  <testcase name="removeAfterAddOneElementToOppositeSideReturnsElement()" classname="deques.ArrayDequeTests" time="0.002"/>
+  <testcase name="getNegativeIndexWhenEmptyReturnsNull()" classname="deques.ArrayDequeTests" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
