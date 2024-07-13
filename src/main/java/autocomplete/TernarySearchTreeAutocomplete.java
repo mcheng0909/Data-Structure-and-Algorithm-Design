@@ -24,8 +24,6 @@ public class TernarySearchTreeAutocomplete implements Autocomplete {
 
     @Override
     public void addAll(Collection<? extends CharSequence> terms) {
-        // TODO: Replace with your code 
-        //throw new UnsupportedOperationException("Not implemented yet");
         for (CharSequence term : terms){
             overallRoot= put(overallRoot,term,0);
         }
@@ -33,8 +31,7 @@ public class TernarySearchTreeAutocomplete implements Autocomplete {
 
     @Override
     public List<CharSequence> allMatches(CharSequence prefix) {
-        // TODO: Replace with your code 
-        //throw new UnsupportedOperationException("Not implemented yet");
+
         if (prefix == null) {
             throw new IllegalArgumentException("calls keysWithPrefix() with null argument");
         }
