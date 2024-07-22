@@ -92,6 +92,41 @@ public abstract class MinPQTests {
         assertTrue(sameRemoveOrder(reference, testing));
     }
 
+    @Test
+    void compareSimple() {
+        MinPQ<String> reference = new DoubleMapMinPQ<>();
+        reference.add("1", 1.0);
+        reference.add("2", 2.0);
+        reference.add("3", 3.0);
+        reference.add("4", 4.0);
+        reference.add("5", 5.0);
+        reference.add("6", 6.0);
+
+        MinPQ<String> testing = new HeapMinPQ<>();
+        testing.add("1", 1.0);
+        testing.add("2", 2.0);
+        testing.add("3", 3.0);
+        testing.add("4", 4.0);
+        testing.add("5", 5.0);
+        testing.add("6", 6.0);
+
+        // Call methods to evaluate behavior.
+        reference.changePriority("3", 0.0);
+        reference.changePriority("1", 7.0);
+        while (!reference.isEmpty()) {
+            System.out.println(reference.removeMin());
+        }
+
+        testing.changePriority("3", 0.0);
+        testing.changePriority("1", 7.0);
+        while (!testing.isEmpty()) {
+            System.out.println(testing.removeMin());
+        }
+
+        // Assert that the different PQ's are equivalent
+        assertTrue(sameRemoveOrder(reference, testing));
+    }
+
     /**
      * Add all comments and toxicities to the given priority queue.
      *
