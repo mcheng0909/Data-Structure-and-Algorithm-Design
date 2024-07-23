@@ -102,7 +102,7 @@ public abstract class MinPQTests {
         reference.add("5", 5.0);
         reference.add("6", 6.0);
 
-        MinPQ<String> testing = new HeapMinPQ<>();
+        MinPQ<String> testing = new OptimizedHeapMinPQ<>();
         testing.add("1", 1.0);
         testing.add("2", 2.0);
         testing.add("3", 3.0);
@@ -110,6 +110,7 @@ public abstract class MinPQTests {
         testing.add("5", 5.0);
         testing.add("6", 6.0);
 
+        assertEquals(reference.peekMin(), testing.peekMin());
         // Call methods to evaluate behavior.
         reference.changePriority("3", 0.0);
         reference.changePriority("1", 7.0);

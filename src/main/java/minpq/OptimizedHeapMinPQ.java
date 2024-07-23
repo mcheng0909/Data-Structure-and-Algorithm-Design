@@ -23,6 +23,7 @@ public class OptimizedHeapMinPQ<E> implements MinPQ<E> {
      */
     public OptimizedHeapMinPQ() {
         elements = new ArrayList<>();
+        elements.add(null);
         elementsToIndex = new HashMap<>();
     }
 
@@ -35,8 +36,7 @@ public class OptimizedHeapMinPQ<E> implements MinPQ<E> {
         elements = new ArrayList<>(elementsAndPriorities.size());
         elementsToIndex = new HashMap<>(elementsAndPriorities.size());
         // TODO: Replace with your code 
-        //throw new UnsupportedOperationException("Not implemented yet");
-        elements.add(null);
+        //throw new UnsupportedOperationException("Not implemented yet")
         for (Map.Entry<E, Double> entry : elementsAndPriorities.entrySet()) {
             add(entry.getKey(), entry.getValue());
         }
@@ -58,7 +58,8 @@ public class OptimizedHeapMinPQ<E> implements MinPQ<E> {
     @Override
     public boolean contains(E element) {
         // TODO: Replace with your code 
-        throw new UnsupportedOperationException("Not implemented yet");
+        //throw new UnsupportedOperationException("Not implemented yet");
+        return elementsToIndex.containsKey(element);
     }
 
     @Override
@@ -81,8 +82,10 @@ public class OptimizedHeapMinPQ<E> implements MinPQ<E> {
         E removeNode = elements.get(1).getElement();
         swap(1,elements.size()-1);
         elements.remove(elements.size()-1);
-        elementsToIndex.remove(removeNode)
-        sink(1);
+        elementsToIndex.remove(removeNode);
+        if(!isEmpty()){
+            sink(1);
+        }
         return removeNode;
     }
 
@@ -92,40 +95,55 @@ public class OptimizedHeapMinPQ<E> implements MinPQ<E> {
             throw new NoSuchElementException("PQ does not contain " + element);
         }
         // TODO: Replace with your code 
-        throw new UnsupportedOperationException("Not implemented yet");
+        //throw new UnsupportedOperationException("Not implemented yet");
+        int index = elementsToIndex.get(element);
+        double n = elements.get(index).getPriority();
+        elements.get(index).setPriority(priority);
+        if (priority<n){
+            swim(index);
+        }else {
+            sink(index);
+        }
+
     }
 
     @Override
     public int size() {
         // TODO: Replace with your code 
         //throw new UnsupportedOperationException("Not implemented yet");
-        return elements.size() - 1;
+        return elements.size()-1;
     }
+
     private void swim(int index){
-        int parent = index/2;
-        while(index>1 && elements.get(index).getPriority()<elements.get(parent).getPriority()){
-            swap(index,parent);
-            index=parent;
+        while (index > 1) {
+            int parent = index / 2;
+            if (elements.get(index).getPriority() < elements.get(parent).getPriority()) {
+                swap(index, parent);
+                index = parent;
+            } else {
+                break;
+            }
         }
     }
     private void sink(int index){
-        while(2*index < elements.size()){
-            int left = 2*index;
-            int right= 2*index +1;
-            int larger=left;
-            if (elements.get(left).getPriority() >= elements.get(right).getPriority()){
-
+        int size = elements.size();
+        while (2 * index +1 <= size) {
+            int i = 2 * index;
+            if (i+1 < size && elements.get(i+1).getPriority() < elements.get(i).getPriority()) {
+                i++;
             }
-            if (!greater(k, j)) break;
-            exch(k, j);
-            k = j;
+            if (elements.get(index).getPriority() <= elements.get(i).getPriority()) {
+                break;
+            }
+            swap(index, i);
+            index = i;
         }
     }
-    private void swap(int index, int parent){
-        PriorityNode<E> n = elements.get(index);
-        elements.set(index,elements.get(parent));
-        elements.set(parent,n);
-        elementsToIndex.put(elements.get(index).getElement(),index);
-        elementsToIndex.put(elements.get(parent).getElement(),parent);
+    private void swap(int i, int j){
+        PriorityNode<E> n = elements.get(i);
+        elements.set(i,elements.get(j));
+        elements.set(j,n);
+        elementsToIndex.put(elements.get(i).getElement(),i);
+        elementsToIndex.put(elements.get(j).getElement(),j);
     }
 }
