@@ -102,7 +102,7 @@ public abstract class MinPQTests {
         reference.add("5", 5.0);
         reference.add("6", 6.0);
 
-        MinPQ<String> testing = new OptimizedHeapMinPQ<>();
+        MinPQ<String> testing = new HeapMinPQ<>();
         testing.add("1", 1.0);
         testing.add("2", 2.0);
         testing.add("3", 3.0);
@@ -117,11 +117,11 @@ public abstract class MinPQTests {
         while (!reference.isEmpty()) {
             System.out.println(reference.removeMin());
         }
-
+        System.out.println("testing");
         testing.changePriority("3", 0.0);
         testing.changePriority("1", 7.0);
         while (!testing.isEmpty()) {
-            System.out.println(testing.removeMin());
+           System.out.println(testing.removeMin());
         }
 
         // Assert that the different PQ's are equivalent

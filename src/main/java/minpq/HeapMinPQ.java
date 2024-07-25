@@ -81,13 +81,7 @@ public class HeapMinPQ<E> implements MinPQ<E> {
         }
         // TODO: Replace with your code 
         //throw new UnsupportedOperationException("Not implemented yet");
-        PriorityNode<E> n = null;
-        for(PriorityNode<E> node:pq){
-            if(node.getElement().equals(element)){
-                n = node;
-            }
-        }
-        pq.remove(n);
+        pq.remove(new PriorityNode<>(element,1));
         pq.add(new PriorityNode<>(element,priority));
     }
 
