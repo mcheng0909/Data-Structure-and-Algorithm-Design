@@ -24,8 +24,32 @@ public class ToposortDAGSolver<V> implements ShortestPathSolver<V> {
     public ToposortDAGSolver(Graph<V> graph, V start) {
         edgeTo = new HashMap<>();
         distTo = new HashMap<>();
-        // TODO: Replace with your code 
-        throw new UnsupportedOperationException("Not implemented yet");
+
+        distTo.put(start, 0.0);
+
+        List<V> postorder = new ArrayList<>();
+        Set<V> visited = new HashSet<>();
+        dfsPostOrder(graph, start, visited, postorder);
+
+        Collections.reverse(postorder);
+
+        for(V vertex : postorder){
+            for(Edge<V> edge : graph.neighbors(vertex)){
+                V from = edge.from;
+                V to = edge.to;
+                double weight = edge.weight;
+                if (!distTo.containsKey(from)) {
+                    distTo.put(from, Double.POSITIVE_INFINITY);
+                }
+                if (!distTo.containsKey(to)) {
+                    distTo.put(to, Double.POSITIVE_INFINITY);
+                }
+                if (distTo.get(to) > distTo.get(from) + weight) {
+                    distTo.put(to, distTo.get(from) + weight);
+                    edgeTo.put(to, edge);
+                }
+            }
+        }
     }
 
     /**
@@ -36,9 +60,15 @@ public class ToposortDAGSolver<V> implements ShortestPathSolver<V> {
      * @param visited the set of visited vertices.
      * @param result  the destination for adding nodes.
      */
-    private void dfsPostOrder(Graph<V> graph, V start, Set<V> visited, List<V> result) {
-        // TODO: Replace with your code 
-        throw new UnsupportedOperationException("Not implemented yet");
+    private void dfsPostOrder(Graph<V> graph, V start, Set<V> visited, List<V> result){
+        visited.add(start);
+        for (Edge<V> edge : graph.neighbors(start) ){
+            V neighbor = edge.to;
+            if(!visited.contains(neighbor)){
+                dfsPostOrder(graph,neighbor,visited,result);
+            }
+        }
+        result.add(start);
     }
 
     @Override
